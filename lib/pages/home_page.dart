@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/general/colors.dart';
+import '../ui/widgets/general_widgets.dart';
+
 class HomePage extends StatelessWidget {
-  //referencia de tareasssss
+  //referencia de tareas
 
   CollectionReference tasksReference =
       FirebaseFirestore.instance.collection('tareasfirebase');
@@ -20,45 +23,57 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
+        backgroundColor: kBrandSecondaryColor,
+        body: SingleChildScrollView(
+          child: Column(children: [
             Container(
-              padding:  const EdgeInsets.symmetric(horizontal: 14.0, vertical: 18.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 22.0),
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(20.0),
-                  bottomLeft: Radius.circular(20.0),
-                  ),
-
+                  bottomRight: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 12,
+                    offset: const Offset(4, 4),
+                  )
+                ],
               ),
-
               child: SafeArea(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Bienvenido, Ramon",
-                    )
+                      "Bienvenido, Jazmin",
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                        color: kBrandPrimaryColor,
+                      ),
+                    ),
                     Text(
                       "Mis Tareas",
+                      style: TextStyle(
+                        fontSize: 36.0,
+                        fontWeight: FontWeight.w600,
+                        color: kBrandPrimaryColor,
+                      ),
                     ),
-                    TextField(),
+                    divider10(),
                   ],
                 ),
               ),
             )
-          ]
-        ),
-      )
+          ]),
+        )
 
-     /* body: StreamBuilder(
+        /* body: StreamBuilder(
         stream: tasksReference.snapshots(),
         builder: (BuildContext context, AsyncSnapshot snap) {
           if (snap.hasData) {
@@ -83,7 +98,7 @@ class HomePage extends StatelessWidget {
       ),
       */
 
-      /* body: Center(
+        /* body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -196,6 +211,6 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),*/
-    );
+        );
   }
 }
