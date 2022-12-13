@@ -1,0 +1,25 @@
+/*codigo realizado en Darpad
+
+------------------------------------------------------------
+
+void main(){
+
+//Stream
+counter().listen((value){
+    print (value);
+
+});
+}
+Future<int> getNumber() async{ 
+    return 1000; 
+    return 1001;
+    }
+
+Stream<int> counter() async*{ 
+    for(int i = 0; i < 10; i++) {
+         yield i;
+         await Future.delayed (Duration (seconds: 2));
+         }
+     }
+
+*/

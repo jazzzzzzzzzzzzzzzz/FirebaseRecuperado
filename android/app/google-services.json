@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "891674983221",
+    "project_id": "frebaseproyecto1dar",
+    "storage_bucket": "frebaseproyecto1dar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891674983221:android:d340b4a09971cbccc3ea7c",
+        "android_client_info": {
+          "package_name": "com.livcode.firebasetask11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891674983221-bc7vfnl73ghs6kvtmalmvv0g0p03rhvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKqsq0l7azLJYpWT9Sv2owVbMZ8yUf_zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891674983221-bc7vfnl73ghs6kvtmalmvv0g0p03rhvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
