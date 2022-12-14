@@ -8,7 +8,8 @@ import '../ui/widgets/general_widgets.dart';
 import '../ui/widgets/textfield_normal_widget.dart';
 
 class HomePage extends StatelessWidget {
-  //referencia de tareassssssssssssssssssssssss
+  List<TaskModel> tasksGeneral = [];
+  //referencia de tareas
 
   CollectionReference tasksReference =
       FirebaseFirestore.instance.collection('tareasfirebase');
@@ -23,6 +24,8 @@ class HomePage extends StatelessWidget {
   Future<int> getNumber() async {
     return 1000;
   }*/
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
