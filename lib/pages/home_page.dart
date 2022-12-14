@@ -5,7 +5,7 @@ import '../ui/general/colors.dart';
 import '../ui/widgets/general_widgets.dart';
 
 class HomePage extends StatelessWidget {
-  //referencia de tareas
+  //referencia de tareassssssssssssssssssssssss
 
   CollectionReference tasksReference =
       FirebaseFirestore.instance.collection('tareasfirebase');
