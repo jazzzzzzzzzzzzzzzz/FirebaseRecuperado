@@ -13,13 +13,7 @@ class ItemCategoryWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.5),
       decoration: BoxDecoration(
           color: categoryColor[text], borderRadius: BorderRadius.circular(6.0)),
-      child: Text(
-        "Personal",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 13.0,
-        ),
-      ),
+      child: Text(text, style: TextStyle(color: Colors.white, fontSize: 13.0)),
     );
   }
 }
