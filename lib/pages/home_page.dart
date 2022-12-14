@@ -110,42 +110,6 @@ class HomePage extends StatelessWidget {
                       color: kBrandPrimaryColor.withOpacity(0.85),
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14.0, vertical: 16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
-                          offset: const Offset(4, 4),
-                          blurRadius: 12.0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Loren ipsum dolor sit amet",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w600,
-                            color: kBrandPrimaryColor.withOpacity(0.85),
-                          ),
-                        ),
-                        Text(
-                          "Lorem ipsum solor",
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w500,
-                            color: kBrandPrimaryColor.withOpacity(0.75),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                 ],
               ),
             )
