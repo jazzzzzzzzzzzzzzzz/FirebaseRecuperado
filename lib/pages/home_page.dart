@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebasetask11/ui/widgets/item_task_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../ui/general/colors.dart';
@@ -110,6 +111,7 @@ class HomePage extends StatelessWidget {
                       color: kBrandPrimaryColor.withOpacity(0.85),
                     ),
                   ),
+                  ItemTaskWidget(),
                 ],
               ),
             )
