@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import '../general/colors.dart';
 
-class TexFieldSeachWidget extends StatelessWidget {
-  const TexFieldSeachWidget({Key? key}) : super(key: key);
+class TextFieldNormalWidget extends StatelessWidget {
+  String hintText;
+  IconData icon;
+  Function? onTap;
+  TextEditingController controller;
+  TextFieldNormalWidget({
+    required this.hintText,
+    required this.icon,
+    this.onTap,
+    required this.controller,
+  });
+
   @override
   Widget build(BuildContext context) {
     return TextField(
