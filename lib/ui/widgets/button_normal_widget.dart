@@ -15,7 +15,12 @@ class ButtonNormalWidget extends StatelessWidget {
           onPressed();
         },
         icon: Icon(Icons.save),
-        label: 
+        label: Text(
+          "Guardar",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         style: ElevatedButton.styleFrom(
             primary: kBrandPrymaryColor,
             shape: RoundedRectangleBorder(
