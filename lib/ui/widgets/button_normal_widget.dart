@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ButtonNormalWidget extends StatelessWidget {
+class ButtonCustomWidget extends StatelessWidget {
+  String text;
+  Color color;
+  String icon;
   Function onPressed;
 
-  ButtonNormalWidget({required this.onPressed});
+  ButtonCustomWidget({
+    required this.text,
+    required this.color,
+    required this.icon,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
