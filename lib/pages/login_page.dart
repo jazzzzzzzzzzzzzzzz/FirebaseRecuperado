@@ -1,5 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tareas/pages/register_page.dart';
+import 'package:tareas/ui/widgets/textfield_normal_widget.dart';
+
+import '../models/user_model.dart';
+import '../services/my_service_firestore.dart';
+import '../ui/general/colors.dart';
+import '../ui/widgets/button_custom_widget.dart';
+import '../ui/widgets/general_widgets.dart';
+import '../ui/widgets/textfield_password_widget.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -84,7 +98,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  //login con facebook
   _loginWithFacebook() async {
     LoginResult _loginResult = await FacebookAuth.instance.login();
     if (_loginResult == LoginStatus.success) {
@@ -146,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.w600,
-                        color: kBrandPrymaryColor),
+                        color: kBrandPrimaryColor),
                   ),
                   TextFieldNormalWidget(
                       hintText: "Correo",
@@ -157,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   divider10(),
                   ButtonCustomWidget(
                     text: "Iniciar Sesión",
-                    color: kBrandPrymaryColor,
+                    color: kBrandPrimaryColor,
                     icon: "check",
                     onPressed: () {
                       _login();
@@ -188,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("¿No tienes cuenta?"),
-                      divider10w(),
+                      divider10Width(),
                       InkWell(
                           onTap: () {
                             Navigator.push(
@@ -200,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                             "Registrate",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                color: kBrandPrymaryColor),
+                                color: kBrandPrimaryColor),
                           )),
                     ],
                   )

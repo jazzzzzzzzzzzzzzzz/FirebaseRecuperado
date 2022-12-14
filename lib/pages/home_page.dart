@@ -1,12 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebasetask11/ui/widgets/item_task_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tareas/pages/login_page.dart';
+import 'package:tareas/ui/general/colors.dart';
+
+import 'package:tareas/ui/widgets/general_widgets.dart';
+import 'package:tareas/ui/widgets/item_task_widget.dart';
+import 'package:tareas/ui/widgets/task_form_widget.dart';
 
 import '../models/task_model.dart';
-import '../ui/general/colors.dart';
-import '../ui/widgets/general_widgets.dart';
-import '../ui/widgets/task_form_widget.dart';
 import '../ui/widgets/textfield_normal_widget.dart';
+import '../utils/task_seach_delegate.dart';
 
 class HomePage extends StatelessWidget {
   List<TaskModel> tasksGeneral = [];
@@ -53,7 +58,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14.0),
-                  color: kBrandPrymaryColor),
+                  color: kBrandPrimaryColor),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: const [
@@ -167,7 +172,7 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.w600,
-                            color: kBrandPrymaryColor),
+                            color: kBrandPrimaryColor),
                       ),
                       StreamBuilder(
                         stream: tasksReference.snapshots(),

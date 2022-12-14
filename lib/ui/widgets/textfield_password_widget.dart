@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../general/colors.dart';
+
 class TextFieldPasswordWidget extends StatefulWidget {
   TextEditingController controller;
   TextFieldPasswordWidget({required this.controller});
@@ -22,7 +24,7 @@ class _TextFieldPasswordWidgetState extends State<TextFieldPasswordWidget> {
         suffixIcon: IconButton(
           icon: Icon(
             isInvisible ? Icons.remove_red_eye : Icons.remove_red_eye_outlined,
-            color: kBrandPrymaryColor.withOpacity(0.60),
+            color: kBrandPrimaryColor.withOpacity(0.60),
           ),
           onPressed: () {
             isInvisible = !isInvisible;
@@ -40,7 +42,6 @@ class _TextFieldPasswordWidgetState extends State<TextFieldPasswordWidget> {
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.0),
             borderSide: BorderSide.none),
-        // desbordamiento
         errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.0),
             borderSide: BorderSide.none),

@@ -8,7 +8,7 @@ class TaskSearchDelegate extends SearchDelegate {
 
   TaskSearchDelegate({required this.tasks});
 
-  List<String> names = ["Juan", "Calors", "Sara", "Vanesa"];
+  List<String> names = ["Andres", "Mario", "Lucero", "Yajaida"];
 
   @override
   String? get searchFieldLabel => "Buscar tarea ...";

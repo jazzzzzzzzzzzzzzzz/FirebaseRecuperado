@@ -1,9 +1,10 @@
-import 'package:firebasetask11/models/task_model.dart';
-import 'package:firebasetask11/ui/widgets/general_widgets.dart';
-import 'package:firebasetask11/ui/widgets/item_categori_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/task_model.dart';
+import '../../services/my_service_firestore.dart';
 import '../general/colors.dart';
+import 'general_widgets.dart';
+import 'item_categori_widget.dart';
 
 class ItemTaskWidget extends StatelessWidget {
   TaskModel taskModel;
@@ -22,14 +23,14 @@ class ItemTaskWidget extends StatelessWidget {
                 Text(
                   "Finalizar tarea",
                   style: TextStyle(
-                      color: kBrandPrymaryColor.withOpacity(0.87),
+                      color: kBrandPrimaryColor.withOpacity(0.87),
                       fontWeight: FontWeight.w600),
                 ),
                 divider10(),
                 Text(
                   "¿Deseas Finalizar esta tarea?",
                   style: TextStyle(
-                      color: kBrandPrymaryColor.withOpacity(0.87),
+                      color: kBrandPrimaryColor.withOpacity(0.87),
                       fontWeight: FontWeight.w400),
                 ),
                 divider20(),
@@ -43,17 +44,17 @@ class ItemTaskWidget extends StatelessWidget {
                         child: Text(
                           "Cancelar",
                           style: TextStyle(
-                              color: kBrandPrymaryColor.withOpacity(0.5),
+                              color: kBrandPrimaryColor.withOpacity(0.5),
                               fontWeight: FontWeight.w400),
                         )),
-                    divider20w(),
+                    divider20width(),
                     ElevatedButton(
                         onPressed: () {
                           _myServiceFirestore.finishiedTask(taskModel.id!);
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
-                            primary: kBrandPrymaryColor,
+                            primary: kBrandPrimaryColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(14),
                             )),
@@ -127,14 +128,13 @@ class ItemTaskWidget extends StatelessWidget {
                   color: Colors.white,
                   icon: Icon(
                     Icons.more_vert,
-                    color: kBrandPrymaryColor.withOpacity(0.85),
+                    color: kBrandPrimaryColor.withOpacity(0.85),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14.0),
                   ),
                   onSelected: (value) {
                     if (value == 2) {
-                      //ejecutar el metodo para finalizar
                       showFinishiedDialog(context);
                     }
                   },

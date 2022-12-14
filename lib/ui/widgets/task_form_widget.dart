@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../models/task_model.dart';
+import '../../services/my_service_firestore.dart';
 import '../general/colors.dart';
 import 'button_normal_widget.dart';
+import 'general_widgets.dart';
 import 'textfield_normal_widget.dart';
 
 class TaskFormWidget extends StatefulWidget {
@@ -114,7 +116,7 @@ class _TaskFormWidgetState extends State<TaskFormWidget> {
                       labelStyle: TextStyle(
                           color: categorySelected == "Personal"
                               ? Colors.white
-                              : kBrandPrymaryColor),
+                              : kBrandPrimaryColor),
                       label: Text("Personal"),
                       onSelected: (bool value) {
                         categorySelected = "Personal";
@@ -129,7 +131,7 @@ class _TaskFormWidgetState extends State<TaskFormWidget> {
                       labelStyle: TextStyle(
                           color: categorySelected == "Trabajo"
                               ? Colors.white
-                              : kBrandPrymaryColor),
+                              : kBrandPrimaryColor),
                       label: Text("Trabajo"),
                       onSelected: (bool value) {
                         categorySelected = "Trabajo";
@@ -144,7 +146,7 @@ class _TaskFormWidgetState extends State<TaskFormWidget> {
                       labelStyle: TextStyle(
                           color: categorySelected == "Otro"
                               ? Colors.white
-                              : kBrandPrymaryColor),
+                              : kBrandPrimaryColor),
                       label: Text("Otro"),
                       onSelected: (bool value) {
                         categorySelected = "Otro";

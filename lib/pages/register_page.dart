@@ -1,7 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../services/my_service_firestore.dart';
+import '../ui/general/colors.dart';
+import '../ui/widgets/button_custom_widget.dart';
+import '../ui/widgets/general_widgets.dart';
+import '../ui/widgets/textfield_normal_widget.dart';
+import '../ui/widgets/textfield_password_widget.dart';
+import 'home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -18,7 +25,6 @@ class _RegisterPageState extends State<RegisterPage> {
   MyServiceFirestore userService = MyServiceFirestore(collection: "users");
 
   _registerUser() async {
-    //iniciando
     try {
       if (formKey.currentState!.validate()) {
         UserCredential userCredential =
@@ -33,7 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
               (route) => false);
         }
       }
-      //capturando errores
     } on FirebaseAuthException catch (error) {
       if (error.code == "weak-password") {
         showSnackBarError(context, "La contraseña es muy débil");
@@ -64,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w600,
-                    color: kBrandPrymaryColor),
+                    color: kBrandPrimaryColor),
               ),
               TextFieldNormalWidget(
                   hintText: "Nombre Completo",
@@ -79,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
               divider10(),
               ButtonCustomWidget(
                 text: "Registrate",
-                color: kBrandPrymaryColor,
+                color: kBrandPrimaryColor,
                 icon: "check",
                 onPressed: () {
                   _registerUser();

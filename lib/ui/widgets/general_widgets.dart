@@ -33,7 +33,7 @@ showSnackBarSuccess(BuildContext context, String text) {
       content: Row(
         children: [
           const Icon(Icons.check_box, color: Colors.white),
-          divider10w(),
+          divider10Width(),
           Text(text),
         ],
       ),
@@ -50,7 +50,7 @@ showSnackBarError(BuildContext context, String text) {
       content: Row(
         children: [
           const Icon(Icons.warning, color: Colors.white),
-          divider10w(),
+          divider10Width(),
           Text(text),
         ],
       ),

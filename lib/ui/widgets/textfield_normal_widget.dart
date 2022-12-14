@@ -35,7 +35,6 @@ class TextFieldNormalWidget extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.0),
             borderSide: BorderSide.none),
-        // desbordamiento
         errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.0),
             borderSide: BorderSide.none),

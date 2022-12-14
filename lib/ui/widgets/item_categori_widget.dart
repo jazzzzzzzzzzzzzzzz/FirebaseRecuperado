@@ -1,5 +1,6 @@
-import 'package:firebasetask11/ui/general/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../general/colors.dart';
 
 class ItemCategoryWidget extends StatelessWidget {
   String text;
