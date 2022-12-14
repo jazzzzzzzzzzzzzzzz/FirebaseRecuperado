@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/task_model.dart';
 import '../ui/general/colors.dart';
 import '../ui/widgets/general_widgets.dart';
-import '../ui/widgets/textfield_seach_widget.dart';
+import '../ui/widgets/textfield_normal_widget.dart';
 
 class HomePage extends StatelessWidget {
   //referencia de tareassssssssssssssssssssssss
