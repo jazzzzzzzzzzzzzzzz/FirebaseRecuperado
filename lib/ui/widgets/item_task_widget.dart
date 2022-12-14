@@ -1,3 +1,4 @@
+import 'package:firebasetask11/models/task_model.dart';
 import 'package:firebasetask11/ui/widgets/general_widgets.dart';
 import 'package:firebasetask11/ui/widgets/item_categori_widget.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../general/colors.dart';
 
 class ItemTaskWidget extends StatelessWidget {
-  const ItemTaskWidget({Key? key}) : super(key: key);
-
+  TaskModel taskModel;
+  ItemTaskWidget({required this.taskModel});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +32,7 @@ class ItemTaskWidget extends StatelessWidget {
           ),
           divider3(),
           Text(
-            "Loren ipsum dolor sit amet",
+            taskModel.title,
             style: TextStyle(
               fontSize: 15.0,
               fontWeight: FontWeight.w600,
@@ -39,13 +40,22 @@ class ItemTaskWidget extends StatelessWidget {
             ),
           ),
           Text(
-            "Lorem ipsum solor",
+            taskModel.description,
             style: TextStyle(
               fontSize: 14.0,
               fontWeight: FontWeight.w500,
               color: kBrandPrimaryColor.withOpacity(0.75),
             ),
-          )
+          ),
+          divider6(),
+          Text(
+            taskModel.date,
+            style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.w500,
+              color: kBrandPrimaryColor.withOpacity(0.75),
+            ),
+          ),
         ],
       ),
     );
