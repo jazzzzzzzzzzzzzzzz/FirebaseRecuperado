@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import '../models/task_model.dart';
 import '../ui/general/colors.dart';
 import '../ui/widgets/general_widgets.dart';
+import '../ui/widgets/task_form_widget.dart';
 import '../ui/widgets/textfield_normal_widget.dart';
 
 class HomePage extends StatelessWidget {
   List<TaskModel> tasksGeneral = [];
-  //referencia de tareas
 
   CollectionReference tasksReference =
       FirebaseFirestore.instance.collection('tareasfirebase');
@@ -27,129 +27,193 @@ class HomePage extends StatelessWidget {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final TextEditingController _searchController = TextEditingController();
 
+  showTaskForm(BuildContext context) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext context) {
+          return Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: TaskFormWidget(),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBrandSecondaryColor,
+        backgroundColor: Color(0xffF4F6FF),
         floatingActionButton: InkWell(
-          onTap: () {},
+          onTap: () {
+            showTaskForm(context);
+          },
+          borderRadius: BorderRadius.circular(14.0),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8.0),
-            decoration: BoxDecoration(
-              color: kBrandPrimaryColor,
-              borderRadius: BorderRadius.circular(14.0),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-                Text(
-                  "Nueva Tarea",
-                  style: TextStyle(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14.0),
+                  color: kBrandPrymaryColor),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Icon(
+                    Icons.add,
                     color: Colors.white,
                   ),
-                )
-              ],
-            ),
-          ),
+                  Text(
+                    "Nueva tarea",
+                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  ),
+                ],
+              )),
         ),
         body: SingleChildScrollView(
-          child: Column(children: [
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 22.0),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(30.0),
-                  bottomLeft: Radius.circular(30.0),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 12,
-                    offset: const Offset(4, 4),
-                  )
-                ],
-              ),
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Bienvenida, Jazmin",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w500,
-                        color: kBrandPrimaryColor,
-                      ),
-                    ),
-                    Text(
-                      "Mis Tareas",
-                      style: TextStyle(
-                        fontSize: 36.0,
-                        fontWeight: FontWeight.w600,
-                        color: kBrandPrimaryColor,
-                      ),
-                    ),
-                    divider10(),
-                    TexFieldSeachWidget(),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 22.0),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(18.0),
+                    bottomLeft: Radius.circular(18.0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 12,
+                      offset: const Offset(4, 4),
+                    )
                   ],
                 ),
+                child: SafeArea(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "Bienvenida Jazmin",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff2c3550),
+                                  ),
+                                ),
+                                divider6(),
+                                Text(
+                                  "Mis tareas",
+                                  style: TextStyle(
+                                    fontSize: 36.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff2c3550),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                FacebookAuth.instance.logOut();
+                                _googleSignIn.signOut();
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()),
+                                    (route) => false);
+                              },
+                              icon: Icon(Icons.exit_to_app),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.05),
+                                blurRadius: 12,
+                                offset: const Offset(4, 4),
+                              ),
+                            ],
+                          ),
+                          child: TextFieldNormalWidget(
+                            icon: Icons.search,
+                            hintText: "Buscar tarea",
+                            controller: _searchController,
+                            onTap: () async {
+                              await showSearch(
+                                  context: context,
+                                  delegate:
+                                      TaskSearchDelegate(tasks: tasksGeneral));
+                            },
+                          ),
+                        ),
+                      ]),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Todas mis Tareas",
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600,
-                      color: kBrandPrimaryColor.withOpacity(0.85),
-                    ),
-                  ),
-                  StreamBuilder(
-                    stream: tasksReference.snapshots(),
-                    builder: (BuildContext context, AsyncSnapshot snap) {
-                      if (snap.hasData) {
-                        List<TaskModel> tasks = [];
-                        QuerySnapshot collection = snap.data;
+              divider10(),
+              Padding(
+                padding: EdgeInsets.all(14),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Todas mis tareas",
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                            color: kBrandPrymaryColor),
+                      ),
+                      StreamBuilder(
+                        stream: tasksReference.snapshots(),
+                        builder: (BuildContext context, AsyncSnapshot snap) {
+                          if (snap.hasData) {
+                            List<TaskModel> tasks = [];
+                            QuerySnapshot collection = snap.data;
+                            /*
+                    
+                      collection.docs.forEach((element) {
+                      Map<String,dynamic> myMap = element.data() as Map<String,dynamic>;
+                      tasks.add(TaskModel.fromJson(myMap));
+                      });*/
 
-                        /* collection.docs.forEach((element) {
-                          Map<String, dynamic> myMap =
-                              element.data() as Map<String, dynamic>;
-                          tasks.add(TaskModel.fromJson(myMap));
-                        });*/
-                        tasks = collection.docs
-                            .map((e) => TaskModel.fromJson(
-                                e.data() as Map<String, dynamic>))
-                            .toList();
-                        return ListView.builder(
-                          itemCount: tasks.length,
-                          shrinkWrap: true,
-                          physics: const ScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index) {
-                            return ItemTaskWidget(
-                              taskModel: tasks[index],
-                            );
-                          },
-                        );
-                      }
+                            /*
+                            tasks = collection.docs
+                                .map((e) => TaskModel.fromJson(
+                                    e.data() as Map<String, dynamic>))
+                                .toList();
+                            */
+                            tasks = collection.docs.map((e) {
+                              TaskModel task = TaskModel.fromJson(
+                                  e.data() as Map<String, dynamic>);
+                              task.id = e.id;
+                              return task;
+                            }).toList();
+                            tasksGeneral.clear();
+                            tasksGeneral = tasks;
 
-                      return loadingWidget();
-                    },
-                  ),
-                ],
-              ),
-            )
-          ]),
+                            return ListView.builder(
+                                itemCount: tasks.length,
+                                shrinkWrap: true,
+                                physics: const ScrollPhysics(),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ItemTaskWidget(
+                                    taskModel: tasks[index],
+                                  );
+                                });
+                          }
+                          return loadingWidget();
+                        },
+                      ),
+                    ]),
+              )
+            ],
+          ),
         )
 
         /* body: StreamBuilder(
