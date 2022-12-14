@@ -61,7 +61,7 @@ class _TaskFormWidgetState extends State<TaskFormWidget> {
       taskService.addTask(taskModel).then((value) {
         if (value.isNotEmpty) {
           Navigator.pop(context);
-          showSnackBarSuccess(context, "La tarea se guardó con éxito");
+          showSnackBarSuccess(context, "La tarea se guardo con exito");
         }
       }).catchError((error) {
         showSnackBarError(
@@ -150,28 +150,6 @@ class _TaskFormWidgetState extends State<TaskFormWidget> {
                         categorySelected = "Otro";
                         setState(() {});
                       }),
-                  /*
-                 FilterChip(
-                  selected: true,
-                  backgroundColor: kBrandSecondaryColor,
-                  selectedColor: categoryColor["Trabajo"],
-                  checkmarkColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  labelStyle: TextStyle(color: Colors.white),
-                  label: Text("Trabajo"), 
-                  onSelected: (bool value){
-                }),
-                 FilterChip(
-                  selected: true,
-                  backgroundColor: kBrandSecondaryColor,
-                  selectedColor: categoryColor["Otro"],
-                  checkmarkColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  labelStyle: TextStyle(color: Colors.white),
-                  label: Text("Otro"), 
-                  onSelected: (bool value){
-                }),
-                 */
                 ],
               ),
               TextFieldNormalWidget(

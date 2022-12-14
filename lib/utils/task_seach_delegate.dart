@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../models/task_model.dart';
+import '../ui/widgets/item_task_widget.dart';
+
 class TaskSearchDelegate extends SearchDelegate {
   List<TaskModel> tasks;
-  //constructor
+
   TaskSearchDelegate({required this.tasks});
 
   List<String> names = ["Juan", "Calors", "Sara", "Vanesa"];
 
   @override
-  // TODO: implement searchFieldLabel
   String? get searchFieldLabel => "Buscar tarea ...";
   @override
-  // TODO: implement searchFieldStyle
   TextStyle? get searchFieldStyle => TextStyle(fontSize: 14);
 
   @override
   List<Widget>? buildActions(BuildContext context) {
-    // TODO: implement buildActions
     return [
       IconButton(
           onPressed: () {

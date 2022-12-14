@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../general/colors.dart';
 
 class TextFieldNormalWidget extends StatelessWidget {
   String hintText;
@@ -15,31 +14,40 @@ class TextFieldNormalWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      controller: controller,
+      onTap: onTap != null
+          ? () {
+              onTap!();
+            }
+          : null,
+      readOnly: onTap != null ? true : false,
       decoration: InputDecoration(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
-        prefixIcon: Icon(
-          Icons.search,
-          size: 20.0,
-          color: kBrandPrimaryColor.withOpacity(0.6),
-        ),
-        hintText: "Buscar tarea...",
+        prefixIcon: Icon(icon),
+        hintText: hintText,
         hintStyle: TextStyle(
-          fontSize: 14.0,
-          color: kBrandPrimaryColor.withOpacity(0.6),
-        ),
+            fontSize: 14.0, color: Color(0xff2C3550).withOpacity(0.6)),
         filled: true,
-        fillColor: kBrandSecondaryColor,
+        fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14.0),
-          borderSide: BorderSide.none,
-        ),
+            borderRadius: BorderRadius.circular(14.0),
+            borderSide: BorderSide.none),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14.0),
-          borderSide: BorderSide.none,
-        ),
+            borderRadius: BorderRadius.circular(14.0),
+            borderSide: BorderSide.none),
+        // desbordamiento
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(14.0),
+            borderSide: BorderSide.none),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(14.0),
+            borderSide: BorderSide.none),
       ),
+      validator: (String? value) {
+        if (value != null && value.isEmpty) {
+          return "Campo obligatorio";
+        }
+      },
     );
   }
 }
